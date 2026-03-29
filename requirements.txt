@@ -1,4 +1,5 @@
 python-dotenv          # used to call env variable
+pyyaml
 pandas
 numpy
 matplotlib
