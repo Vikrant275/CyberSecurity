@@ -1,0 +1,4 @@
+2026-03-31 19:46:45,079 - INFO - data ingestion started - test_data_ingestion - 11
+2026-03-31 19:46:49,294 - INFO - Train set size: 8291 and test set size: 2764 - test_data_ingestion - 78
+2026-03-31 19:46:49,318 - INFO - export train data to [D:\\PythonProject3\\CyberSecurity\\artifacts\03_31_2026_19_46_44\data_ingestion\train.csv] path - test_data_ingestion - 83
+2026-03-31 19:46:49,332 - INFO - export test data to [D:\\PythonProject3\\CyberSecurity\\artifacts\03_31_2026_19_46_44\data_ingestion\test.csv] path - test_data_ingestion - 87

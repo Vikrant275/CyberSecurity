@@ -1,0 +1,3 @@
+input_data: phisingData.csv
+train_file : train.csv
+test_file : test.csv
