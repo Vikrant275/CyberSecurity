@@ -1,0 +1,29 @@
+2026-04-05 22:19:41,754 - INFO - Export data from MongoDB - test_data_ingestion - 38
+2026-04-05 22:19:48,519 - INFO - successfully Export data from MongoDB - test_data_ingestion - 44
+2026-04-05 22:19:48,615 - INFO - Train set size: 16582 and test set size: 5528 - test_data_ingestion - 80
+2026-04-05 22:19:48,673 - INFO - export train data to [D:\PythonProject3\CyberSecurity\artifacts\04_05_2026_22_19_40\data_ingestion\train.csv] path - test_data_ingestion - 83
+2026-04-05 22:19:48,693 - INFO - export test data to [D:\PythonProject3\CyberSecurity\artifacts\04_05_2026_22_19_40\data_ingestion\test.csv] path - test_data_ingestion - 86
+2026-04-05 22:19:48,695 - INFO - Reading schema file D:\\PythonProject3\\CyberSecurity\\schema_data\schema.yaml - test_data_ingestion - 13
+2026-04-05 22:19:48,699 - INFO - Reading training data from file - test_data_ingestion - 41
+2026-04-05 22:19:48,734 - INFO - Reading test data from file - test_data_ingestion - 44
+2026-04-05 22:19:48,749 - INFO - Required no. of columns: 31 - test_data_ingestion - 46
+2026-04-05 22:19:48,750 - INFO - columns in dataframe : 31 - test_data_ingestion - 47
+2026-04-05 22:19:48,750 - INFO - Required no. of columns: 31 - test_data_ingestion - 46
+2026-04-05 22:19:48,750 - INFO - columns in dataframe : 31 - test_data_ingestion - 47
+2026-04-05 22:19:48,751 - INFO - Required no. of null values: 0 - test_data_ingestion - 61
+2026-04-05 22:19:48,753 - INFO - Required no. of null values: 0 - test_data_ingestion - 61
+2026-04-05 22:19:48,757 - INFO - Required no. of numeric values: 31 - test_data_ingestion - 74
+2026-04-05 22:19:48,758 - INFO - Required no. of numeric values: 31 - test_data_ingestion - 74
+2026-04-05 22:19:48,846 - INFO - Writing content in file D:\PythonProject3\CyberSecurity\artifacts\04_05_2026_22_19_40\validation_data\validated\report_drift\report.yaml - test_data_ingestion - 29
+2026-04-05 22:19:48,849 - INFO - written successfully in D:\PythonProject3\CyberSecurity\artifacts\04_05_2026_22_19_40\validation_data\validated\report_drift\report.yaml - test_data_ingestion - 37
+2026-04-05 22:19:48,939 - INFO - Initiating data transformation - test_data_ingestion - 56
+2026-04-05 22:19:48,939 - INFO - Reading data from file - test_data_ingestion - 30
+2026-04-05 22:19:48,978 - INFO - Reading data from file - test_data_ingestion - 30
+2026-04-05 22:19:48,991 - INFO - Getting data transformation pipeline - test_data_ingestion - 42
+2026-04-05 22:19:48,991 - INFO - Imputer initialized successfully - test_data_ingestion - 44
+2026-04-05 22:19:49,010 - INFO - Saving numpy array data - test_data_ingestion - 120
+2026-04-05 22:19:49,015 - INFO - Saved successfully numpy array data to D:\PythonProject3\CyberSecurity\artifacts\04_05_2026_22_19_40\transformation_dir\train.npy - test_data_ingestion - 125
+2026-04-05 22:19:49,016 - INFO - Saving numpy array data - test_data_ingestion - 120
+2026-04-05 22:19:49,018 - INFO - Saved successfully numpy array data to D:\PythonProject3\CyberSecurity\artifacts\04_05_2026_22_19_40\transformation_dir\test.npy - test_data_ingestion - 125
+2026-04-05 22:19:49,018 - INFO - Saving object data - test_data_ingestion - 139
+2026-04-05 22:19:49,024 - INFO - Saved successfully object data to D:\PythonProject3\CyberSecurity\artifacts\04_05_2026_22_19_40\transformation_dir\preprocessing.pkl - test_data_ingestion - 144

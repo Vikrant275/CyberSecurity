@@ -1,3 +1,7 @@
 input_data: phisingData.csv
 train_file : train.csv
 test_file : test.csv
+schema_file : schema.yaml
+transformed_train : train.npy
+transformed_test : test.npy
+transformed_obj : preprocessing.pkl

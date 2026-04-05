@@ -35,11 +35,13 @@ class DataIngestion:
         '''
 
         try:
+            logging.info("Export data from MongoDB")
             database_name = self.data_ingestion_config.database_name
             collection_name = self.data_ingestion_config.collection_name
             self.mongo_client = pymongo.MongoClient(MONGODB_URL)
             collection = self.mongo_client[database_name][collection_name]
             df = pd.DataFrame(list(collection.find()))
+            logging.info("successfully Export data from MongoDB")
             if "_id" in df.columns.to_list():    # in mongodb database _id columns present that's why we don't required its
                 df=df.drop(columns=['_id'])
 
