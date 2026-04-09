@@ -5,3 +5,4 @@ schema_file : schema.yaml
 transformed_train : train.npy
 transformed_test : test.npy
 transformed_obj : preprocessing.pkl
+model_name : model.pkl

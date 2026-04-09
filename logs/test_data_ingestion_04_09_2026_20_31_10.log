@@ -1,0 +1,77 @@
+2026-04-09 20:31:12,213 - INFO - Export data from MongoDB - test_data_ingestion - 38
+2026-04-09 20:31:16,048 - INFO - successfully Export data from MongoDB - test_data_ingestion - 44
+2026-04-09 20:31:16,124 - INFO - Train set size: 16582 and test set size: 5528 - test_data_ingestion - 80
+2026-04-09 20:31:16,175 - INFO - export train data to [D:\PythonProject3\CyberSecurity\artifacts\04_09_2026_20_31_11\data_ingestion\train.csv] path - test_data_ingestion - 83
+2026-04-09 20:31:16,193 - INFO - export test data to [D:\PythonProject3\CyberSecurity\artifacts\04_09_2026_20_31_11\data_ingestion\test.csv] path - test_data_ingestion - 86
+2026-04-09 20:31:16,193 - INFO - Reading schema file D:\\PythonProject3\\CyberSecurity\\schema_data\schema.yaml - test_data_ingestion - 13
+2026-04-09 20:31:16,199 - INFO - Reading training data from file - test_data_ingestion - 41
+2026-04-09 20:31:16,229 - INFO - Reading test data from file - test_data_ingestion - 44
+2026-04-09 20:31:16,242 - INFO - Required no. of columns: 31 - test_data_ingestion - 46
+2026-04-09 20:31:16,242 - INFO - columns in dataframe : 31 - test_data_ingestion - 47
+2026-04-09 20:31:16,242 - INFO - Required no. of columns: 31 - test_data_ingestion - 46
+2026-04-09 20:31:16,242 - INFO - columns in dataframe : 31 - test_data_ingestion - 47
+2026-04-09 20:31:16,243 - INFO - Required no. of null values: 0 - test_data_ingestion - 61
+2026-04-09 20:31:16,244 - INFO - Required no. of null values: 0 - test_data_ingestion - 61
+2026-04-09 20:31:16,245 - INFO - Required no. of numeric values: 31 - test_data_ingestion - 74
+2026-04-09 20:31:16,246 - INFO - Required no. of numeric values: 31 - test_data_ingestion - 74
+2026-04-09 20:31:16,302 - INFO - Writing content in file D:\PythonProject3\CyberSecurity\artifacts\04_09_2026_20_31_11\validation_data\validated\report_drift\report.yaml - test_data_ingestion - 29
+2026-04-09 20:31:16,304 - INFO - written successfully in D:\PythonProject3\CyberSecurity\artifacts\04_09_2026_20_31_11\validation_data\validated\report_drift\report.yaml - test_data_ingestion - 37
+2026-04-09 20:31:16,371 - INFO - Initiating data transformation - test_data_ingestion - 56
+2026-04-09 20:31:16,371 - INFO - Reading data from file - test_data_ingestion - 30
+2026-04-09 20:31:16,409 - INFO - Reading data from file - test_data_ingestion - 30
+2026-04-09 20:31:16,424 - INFO - Getting data transformation pipeline - test_data_ingestion - 42
+2026-04-09 20:31:16,425 - INFO - Imputer initialized successfully - test_data_ingestion - 44
+2026-04-09 20:31:16,442 - INFO - Saving numpy array data - test_data_ingestion - 120
+2026-04-09 20:31:16,447 - INFO - Saved successfully numpy array data to D:\PythonProject3\CyberSecurity\artifacts\04_09_2026_20_31_11\transformation_dir\train.npy - test_data_ingestion - 125
+2026-04-09 20:31:16,448 - INFO - Saving numpy array data - test_data_ingestion - 120
+2026-04-09 20:31:16,451 - INFO - Saved successfully numpy array data to D:\PythonProject3\CyberSecurity\artifacts\04_09_2026_20_31_11\transformation_dir\test.npy - test_data_ingestion - 125
+2026-04-09 20:31:16,451 - INFO - Saving object data - test_data_ingestion - 160
+2026-04-09 20:31:16,455 - INFO - Saved successfully object data to D:\PythonProject3\CyberSecurity\artifacts\04_09_2026_20_31_11\transformation_dir\preprocessing.pkl - test_data_ingestion - 165
+2026-04-09 20:31:16,456 - INFO - Initiating model training - test_data_ingestion - 131
+2026-04-09 20:31:16,456 - INFO - loading training data from D:\PythonProject3\CyberSecurity\artifacts\04_09_2026_20_31_11\transformation_dir\train.npy - test_data_ingestion - 136
+2026-04-09 20:31:16,457 - INFO - Loading numpy array data - test_data_ingestion - 137
+2026-04-09 20:31:16,459 - INFO - Loaded successfully numpy array data to D:\PythonProject3\CyberSecurity\artifacts\04_09_2026_20_31_11\transformation_dir\train.npy - test_data_ingestion - 144
+2026-04-09 20:31:16,459 - INFO - loading test data from D:\PythonProject3\CyberSecurity\artifacts\04_09_2026_20_31_11\transformation_dir\test.npy - test_data_ingestion - 139
+2026-04-09 20:31:16,459 - INFO - Loading numpy array data - test_data_ingestion - 137
+2026-04-09 20:31:16,460 - INFO - Loaded successfully numpy array data to D:\PythonProject3\CyberSecurity\artifacts\04_09_2026_20_31_11\transformation_dir\test.npy - test_data_ingestion - 144
+2026-04-09 20:31:16,460 - INFO - splitting training  and testing data into input feature and output feature  - test_data_ingestion - 142
+2026-04-09 20:31:16,460 - INFO - Evaluating model.... - test_data_ingestion - 44
+2026-04-09 20:33:10,151 - INFO - ('XGBClassifier', {'best_model': XGBClassifier(base_score=None, booster=None, callbacks=None,
+              colsample_bylevel=None, colsample_bynode=None,
+              colsample_bytree=1.0, device=None, early_stopping_rounds=None,
+              enable_categorical=False, eval_metric=None, feature_types=None,
+              feature_weights=None, gamma=None, grow_policy=None,
+              importance_type=None, interaction_constraints=None,
+              learning_rate=0.1, max_bin=None, max_cat_threshold=None,
+              max_cat_to_onehot=None, max_delta_step=None, max_depth=10,
+              max_leaves=None, min_child_weight=None, missing=nan,
+              monotone_constraints=None, multi_strategy=None, n_estimators=200,
+              n_jobs=None, num_parallel_tree=None, ...), 'f1_score_test': 0.98654563138272, 'precision_test': 0.987987012987013, 'recall_test': 0.9851084493363548}) ------------ - test_data_ingestion - 97
+2026-04-09 20:33:10,151 - INFO - model evaluation successfully - test_data_ingestion - 99
+2026-04-09 20:33:10,152 - INFO - best model: XGBClassifier(base_score=None, booster=None, callbacks=None,
+              colsample_bylevel=None, colsample_bynode=None,
+              colsample_bytree=1.0, device=None, early_stopping_rounds=None,
+              enable_categorical=False, eval_metric=None, feature_types=None,
+              feature_weights=None, gamma=None, grow_policy=None,
+              importance_type=None, interaction_constraints=None,
+              learning_rate=0.1, max_bin=None, max_cat_threshold=None,
+              max_cat_to_onehot=None, max_delta_step=None, max_depth=10,
+              max_leaves=None, min_child_weight=None, missing=nan,
+              monotone_constraints=None, multi_strategy=None, n_estimators=200,
+              n_jobs=None, num_parallel_tree=None, ...)  with best score: {'best_model': XGBClassifier(base_score=None, booster=None, callbacks=None,
+              colsample_bylevel=None, colsample_bynode=None,
+              colsample_bytree=1.0, device=None, early_stopping_rounds=None,
+              enable_categorical=False, eval_metric=None, feature_types=None,
+              feature_weights=None, gamma=None, grow_policy=None,
+              importance_type=None, interaction_constraints=None,
+              learning_rate=0.1, max_bin=None, max_cat_threshold=None,
+              max_cat_to_onehot=None, max_delta_step=None, max_depth=10,
+              max_leaves=None, min_child_weight=None, missing=nan,
+              monotone_constraints=None, multi_strategy=None, n_estimators=200,
+              n_jobs=None, num_parallel_tree=None, ...), 'f1_score_test': 0.98654563138272, 'precision_test': 0.987987012987013, 'recall_test': 0.9851084493363548} - test_data_ingestion - 100
+2026-04-09 20:33:10,179 - INFO - loading preprocessed pkl file - test_data_ingestion - 107
+2026-04-09 20:33:10,179 - INFO - Loading object data - test_data_ingestion - 177
+2026-04-09 20:33:10,180 - INFO - Loaded successfully object data to D:\PythonProject3\CyberSecurity\artifacts\04_09_2026_20_31_11\transformation_dir\preprocessing.pkl - test_data_ingestion - 184
+2026-04-09 20:33:10,181 - INFO - created model directory at D:\PythonProject3\CyberSecurity\artifacts\04_09_2026_20_31_11\model_training - test_data_ingestion - 113
+2026-04-09 20:33:10,181 - INFO - Saving object data - test_data_ingestion - 160
+2026-04-09 20:33:10,188 - INFO - Saved successfully object data to D:\PythonProject3\CyberSecurity\artifacts\04_09_2026_20_31_11\model_training\model.pkl - test_data_ingestion - 165

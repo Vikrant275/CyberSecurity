@@ -2,3 +2,4 @@ input_data: D:\\PythonProject3\\CyberSecurity\\network_Data
 log: D:\\PythonProject3\\CyberSecurity\\logs
 artifact: D:\PythonProject3\CyberSecurity\artifacts
 schema_data : D:\\PythonProject3\\CyberSecurity\\schema_data
+model_train : model_training

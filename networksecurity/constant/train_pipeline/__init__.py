@@ -5,16 +5,6 @@ import pandas as pd
 from framework.fetch_conf import GetConfig
 
 '''
-Data Ingestion related constant variables 
-'''
-DATA_INGESTION_COLLECTION_NAME : str= 'phisingData'
-DATA_INGESTION_DATABASE_NAME : str= 'vikrant'
-DATA_INGESTION_DIR_NAME : str= 'data_ingestion'
-DATA_INGESTION_FEATURE_STORE_DIR : str= 'feature_store'
-DATAINGESTION_INGESTED_DIR : str= 'ingested_data'
-DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO : float= 0.25
-
-'''
 defining common constant variables for training pipeline 
 '''
 TARGET_COL : str= 'Result'
@@ -28,6 +18,18 @@ TEST_FILE_NAME : str = GetConfig(config_file='config_file.yaml',variables='test_
 SCHEMA_FILE_NAME :str = os.path.join(GetConfig(config_file='config_path.yaml',variables='schema_data').get(),
                                      GetConfig(config_file='config_file.yaml',variables='schema_file').get()
                                      )
+
+
+'''
+Data Ingestion related constant variables 
+'''
+DATA_INGESTION_COLLECTION_NAME : str= 'phisingData'
+DATA_INGESTION_DATABASE_NAME : str= 'vikrant'
+DATA_INGESTION_DIR_NAME : str= 'data_ingestion'
+DATA_INGESTION_FEATURE_STORE_DIR : str= 'feature_store'
+DATAINGESTION_INGESTED_DIR : str= 'ingested_data'
+DATA_INGESTION_TRAIN_TEST_SPLIT_RATIO : float= 0.25
+
 
 '''
 Data validation related constant variables
@@ -51,3 +53,12 @@ DATA_TRANSFORMATION_IMPUTER_PARAMS : dict = {
     'n_neighbors' : 3,
     'weights' : 'uniform'
 }
+
+
+'''
+Model training related variables
+'''
+MODEL_TRAINING_DIR_NAME :str = GetConfig(config_file='config_path.yaml', variables='model_train').get()
+MODEL_TRAINING_MODEL_NAME : str = GetConfig(config_file='config_file.yaml', variables='model_name').get()
+MODEL_TRAINED_EXPECTED_SCORE :float = 0.6
+MODEL_TRAINER_OVER_FITTING_UNDER_FITTING_THRESHOLD : float = 0.05

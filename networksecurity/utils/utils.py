@@ -5,7 +5,7 @@ from scipy.stats import ks_2samp
 
 from framework.logger import logging
 from framework.exception import MyException
-import dill,pickle
+import pickle
 
 
 def read_yaml(yaml_file_name: str) -> dict:
@@ -127,6 +127,27 @@ def save_numpy_array_data(file_path:str,array:np.array):
         logging.error(e)
         raise MyException(e, sys)
 
+def load_numpy_array_data(file_path:str):
+    '''
+    This function loads the numpy array data
+    :param file_path:
+    :return: numpy array
+    '''
+    try:
+        logging.info('Loading numpy array data')
+        if not os.path.exists(file_path):
+            logging.error(f'File {file_path} does not exist')
+            raise FileNotFoundError(f"File {file_path} does not exist")
+        else:
+            with open(file_path, 'rb') as file:
+                array = np.load(file)
+        logging.info(f'Loaded successfully numpy array data to {file_path}')
+        return array
+    except Exception as e:
+        logging.error(e)
+        raise MyException(e, sys)
+
+
 def save_object(file_path:str,obj:object):
     '''
     This function saves the object data
@@ -142,6 +163,26 @@ def save_object(file_path:str,obj:object):
         with open(file_path, 'wb') as f_obj:
             pickle.dump(obj, f_obj)
         logging.info(f'Saved successfully object data to {file_path}')
+    except Exception as e:
+        logging.error(e)
+        raise MyException(e, sys)
+
+def load_object(file_path:str):
+    '''
+    This function loads the object data
+    :param file_path:
+    :return: obj
+    '''
+    try:
+        logging.info('Loading object data')
+        if not os.path.exists(file_path):
+            logging.error(f'File {file_path} does not exist')
+            raise FileNotFoundError(f'File {file_path} does not exist')
+        else:
+            with open(file_path, 'rb') as f_obj:
+                obj = pickle.load(f_obj)
+        logging.info(f'Loaded successfully object data to {file_path}')
+        return obj
     except Exception as e:
         logging.error(e)
         raise MyException(e, sys)
