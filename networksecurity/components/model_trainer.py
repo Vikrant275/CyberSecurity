@@ -5,6 +5,7 @@ import os,sys
 from framework.exception import MyException
 from framework.logger import logging
 
+import mlflow
 from networksecurity.entity.config_entity import ModelTraningConfig
 from networksecurity.entity.artifact_entitiy import ClassificationMetricsArtifact,ModelTrainingArtifact,DataTransformationArtifact
 
@@ -30,15 +31,35 @@ class ModelTrainer:
             logging.error(e)
             raise MyException(e,sys)
 
+    def track_mlflow(self,model,train_classification,test_classification):
+        with mlflow.start_run() as run:
+            mlflow.sklearn.log_model(
+                sk_model=model,
+                name="my_model",
+                serialization_format="skops"
+            )
+
+            mlflow.log_param("train_f1_score",train_classification.f1_score)
+            mlflow.log_param("train_precision",train_classification.precision_score)
+            mlflow.log_param("train_recall",train_classification.recall_score)
+
+            mlflow.log_param("test_f1_score", test_classification.f1_score)
+            mlflow.log_param("test_precision", test_classification.precision_score)
+            mlflow.log_param("test_recall", test_classification.recall_score)
+        mlflow.end_run()
+
+
+
+
     def train_model(self,x_train:np.ndarray,y_train:np.ndarray,x_test:np.ndarray,y_test:np.ndarray):
         models = {
             'LogisticRegression':LogisticRegression(),
             'RandomForestClassifier':RandomForestClassifier(),
-            'GradientBoostingClassifier':GradientBoostingClassifier(),
-            'KNeighborsClassifier':KNeighborsClassifier(),
-            'DecisionTreeClassifier':DecisionTreeClassifier(),
-            'SVC':SVC(),
-            'XGBClassifier':XGBClassifier()
+            # 'GradientBoostingClassifier':GradientBoostingClassifier(),
+            # 'KNeighborsClassifier':KNeighborsClassifier(),
+            # 'DecisionTreeClassifier':DecisionTreeClassifier(),
+            # 'SVC':SVC(),
+            # 'XGBClassifier':XGBClassifier()
         }
 
         param_grids = {
@@ -104,6 +125,16 @@ class ModelTrainer:
 
         y_test_pred = model.predict(x_test)
         classification_test_metric = ClassificationMetrics(y_test,y_test_pred).get_classification_metrics()
+
+        # Track mlflow
+        logging.info("mlflow tracking started")
+
+        tracking_dir = os.path.abspath("D:\\PythonProject3\\CyberSecurity\\mlruns")
+        mlflow.set_tracking_uri("file:\\" + tracking_dir)
+
+        self.track_mlflow(model ,classification_train_metric,classification_test_metric)
+        logging.info("mlflow tracking ended")
+
         logging.info(f"loading preprocessed pkl file")
         preprocessor  = load_object(file_path=self.data_transformation_artifact.transformed_object_file_path)
 
@@ -115,6 +146,7 @@ class ModelTrainer:
 
         network_model = NetworkModel(preprocessor=preprocessor,model=model)
         save_object(file_path=model_path,obj=network_model)
+        save_object(file_path='final_model/model.pkl',obj=model)
 
         model_train_artifact = ModelTrainingArtifact(
             trained_model_file_path=self.model_trainer_config.model_training_dir,

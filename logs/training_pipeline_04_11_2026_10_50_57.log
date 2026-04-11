@@ -1,0 +1,71 @@
+2026-04-11 10:50:59,722 - INFO - Starting pipeline training - training_pipeline - 90
+2026-04-11 10:50:59,722 - INFO - Starting data ingestion - training_pipeline - 28
+2026-04-11 10:50:59,722 - INFO - Export data from MongoDB - training_pipeline - 38
+2026-04-11 10:51:11,608 - INFO - successfully Export data from MongoDB - training_pipeline - 44
+2026-04-11 10:51:11,709 - INFO - Train set size: 16582 and test set size: 5528 - training_pipeline - 80
+2026-04-11 10:51:11,784 - INFO - export train data to [D:\PythonProject3\CyberSecurity\artifacts\04_11_2026_10_50_57\data_ingestion\train.csv] path - training_pipeline - 83
+2026-04-11 10:51:11,802 - INFO - export test data to [D:\PythonProject3\CyberSecurity\artifacts\04_11_2026_10_50_57\data_ingestion\test.csv] path - training_pipeline - 86
+2026-04-11 10:51:11,805 - INFO - Data ingestion initiated and artifact: DataIngestionArtifact(trained_file_path='D:\\PythonProject3\\CyberSecurity\\artifacts\\04_11_2026_10_50_57\\data_ingestion\\train.csv', test_file_path='D:\\PythonProject3\\CyberSecurity\\artifacts\\04_11_2026_10_50_57\\data_ingestion\\test.csv') - training_pipeline - 34
+2026-04-11 10:51:11,806 - INFO - Starting data validation - training_pipeline - 45
+2026-04-11 10:51:11,806 - INFO - Reading schema file D:\\PythonProject3\\CyberSecurity\\schema_data\schema.yaml - training_pipeline - 13
+2026-04-11 10:51:11,809 - INFO - Reading training data from file - training_pipeline - 41
+2026-04-11 10:51:11,844 - INFO - Reading test data from file - training_pipeline - 44
+2026-04-11 10:51:11,859 - INFO - Required no. of columns: 31 - training_pipeline - 46
+2026-04-11 10:51:11,859 - INFO - columns in dataframe : 31 - training_pipeline - 47
+2026-04-11 10:51:11,859 - INFO - Required no. of columns: 31 - training_pipeline - 46
+2026-04-11 10:51:11,859 - INFO - columns in dataframe : 31 - training_pipeline - 47
+2026-04-11 10:51:11,861 - INFO - Required no. of null values: 0 - training_pipeline - 61
+2026-04-11 10:51:11,862 - INFO - Required no. of null values: 0 - training_pipeline - 61
+2026-04-11 10:51:11,865 - INFO - Required no. of numeric values: 31 - training_pipeline - 74
+2026-04-11 10:51:11,867 - INFO - Required no. of numeric values: 31 - training_pipeline - 74
+2026-04-11 10:51:11,936 - INFO - Writing content in file D:\PythonProject3\CyberSecurity\artifacts\04_11_2026_10_50_57\validation_data\validated\report_drift\report.yaml - training_pipeline - 29
+2026-04-11 10:51:11,940 - INFO - written successfully in D:\PythonProject3\CyberSecurity\artifacts\04_11_2026_10_50_57\validation_data\validated\report_drift\report.yaml - training_pipeline - 37
+2026-04-11 10:51:12,023 - INFO - Data validation initiated and artifact: DataValidationArtifact(validation_status=False, validate_report={}, valid_train_file_path='D:\\PythonProject3\\CyberSecurity\\artifacts\\04_11_2026_10_50_57\\validation_data\\validated\\train.csv', valid_test_file_path='D:\\PythonProject3\\CyberSecurity\\artifacts\\04_11_2026_10_50_57\\validation_data\\validated\\test.csv', invalid_train_file_path=None, invalid_test_file_path=None, drift_report_file_path='D:\\PythonProject3\\CyberSecurity\\artifacts\\04_11_2026_10_50_57\\validation_data\\validated\\report_drift\\report.yaml') - training_pipeline - 50
+2026-04-11 10:51:12,023 - INFO - Starting data transformation - training_pipeline - 60
+2026-04-11 10:51:12,023 - INFO - Initiating data transformation - training_pipeline - 56
+2026-04-11 10:51:12,023 - INFO - Reading data from file - training_pipeline - 30
+2026-04-11 10:51:12,053 - INFO - Reading data from file - training_pipeline - 30
+2026-04-11 10:51:12,065 - INFO - Getting data transformation pipeline - training_pipeline - 42
+2026-04-11 10:51:12,065 - INFO - Imputer initialized successfully - training_pipeline - 44
+2026-04-11 10:51:12,076 - INFO - Saving numpy array data - training_pipeline - 120
+2026-04-11 10:51:12,080 - INFO - Saved successfully numpy array data to D:\PythonProject3\CyberSecurity\artifacts\04_11_2026_10_50_57\transformation_dir\train.npy - training_pipeline - 125
+2026-04-11 10:51:12,080 - INFO - Saving numpy array data - training_pipeline - 120
+2026-04-11 10:51:12,085 - INFO - Saved successfully numpy array data to D:\PythonProject3\CyberSecurity\artifacts\04_11_2026_10_50_57\transformation_dir\test.npy - training_pipeline - 125
+2026-04-11 10:51:12,085 - INFO - Saving object data - training_pipeline - 160
+2026-04-11 10:51:12,088 - INFO - Saved successfully object data to D:\PythonProject3\CyberSecurity\artifacts\04_11_2026_10_50_57\transformation_dir\preprocessing.pkl - training_pipeline - 165
+2026-04-11 10:51:12,088 - INFO - Saving object data - training_pipeline - 160
+2026-04-11 10:51:12,092 - INFO - Saved successfully object data to final_preprocessor/preprocessor.pkl - training_pipeline - 165
+2026-04-11 10:51:12,093 - INFO - Data transformation initiated and artifact: DataTransformationArtifact(transformed_object_file_path='D:\\PythonProject3\\CyberSecurity\\artifacts\\04_11_2026_10_50_57\\transformation_dir\\preprocessing.pkl', transformed_train_file_path='D:\\PythonProject3\\CyberSecurity\\artifacts\\04_11_2026_10_50_57\\transformation_dir\\train.npy', transformed_test_file_path='D:\\PythonProject3\\CyberSecurity\\artifacts\\04_11_2026_10_50_57\\transformation_dir\\test.npy') - training_pipeline - 65
+2026-04-11 10:51:12,093 - INFO - Starting model training - training_pipeline - 75
+2026-04-11 10:51:12,093 - INFO - Initiating model training - training_pipeline - 163
+2026-04-11 10:51:12,093 - INFO - loading training data from D:\PythonProject3\CyberSecurity\artifacts\04_11_2026_10_50_57\transformation_dir\train.npy - training_pipeline - 168
+2026-04-11 10:51:12,093 - INFO - Loading numpy array data - training_pipeline - 137
+2026-04-11 10:51:12,095 - INFO - Loaded successfully numpy array data to D:\PythonProject3\CyberSecurity\artifacts\04_11_2026_10_50_57\transformation_dir\train.npy - training_pipeline - 144
+2026-04-11 10:51:12,095 - INFO - loading test data from D:\PythonProject3\CyberSecurity\artifacts\04_11_2026_10_50_57\transformation_dir\test.npy - training_pipeline - 171
+2026-04-11 10:51:12,095 - INFO - Loading numpy array data - training_pipeline - 137
+2026-04-11 10:51:12,096 - INFO - Loaded successfully numpy array data to D:\PythonProject3\CyberSecurity\artifacts\04_11_2026_10_50_57\transformation_dir\test.npy - training_pipeline - 144
+2026-04-11 10:51:12,096 - INFO - splitting training  and testing data into input feature and output feature  - training_pipeline - 174
+2026-04-11 10:51:12,096 - INFO - Evaluating model.... - training_pipeline - 44
+2026-04-11 10:51:29,373 - INFO - ('RandomForestClassifier', {'best_model': RandomForestClassifier(bootstrap=False, max_depth=20), 'f1_score_test': 0.9863325740318907, 'precision_test': 0.9824959481361426, 'recall_test': 0.9901992812806273}) ------------ - training_pipeline - 118
+2026-04-11 10:51:29,373 - INFO - model evaluation successfully - training_pipeline - 120
+2026-04-11 10:51:29,373 - INFO - best model: RandomForestClassifier(bootstrap=False, max_depth=20)  with best score: {'best_model': RandomForestClassifier(bootstrap=False, max_depth=20), 'f1_score_test': 0.9863325740318907, 'precision_test': 0.9824959481361426, 'recall_test': 0.9901992812806273} - training_pipeline - 121
+2026-04-11 10:51:29,546 - INFO - mlflow tracking started - training_pipeline - 130
+2026-04-11 10:51:29,834 - DEBUG - Popen(['git', 'version'], cwd=D:\PythonProject3\CyberSecurity\networksecurity\pipeline, stdin=None, shell=False, universal_newlines=False) - training_pipeline - 1270
+2026-04-11 10:51:29,887 - DEBUG - Popen(['git', 'version'], cwd=D:\PythonProject3\CyberSecurity\networksecurity\pipeline, stdin=None, shell=False, universal_newlines=False) - training_pipeline - 1270
+2026-04-11 10:51:29,933 - DEBUG - sys.platform='win32', git_executable='git' - training_pipeline - 494
+2026-04-11 10:51:29,934 - DEBUG - Popen(['git', 'check-ignore', 'D:\\PythonProject3\\CyberSecurity\\networksecurity\\pipeline'], cwd=D:\PythonProject3\CyberSecurity, stdin=None, shell=False, universal_newlines=False) - training_pipeline - 1270
+2026-04-11 10:51:29,986 - DEBUG - Popen(['git', 'cat-file', '--batch-check'], cwd=D:\PythonProject3\CyberSecurity, stdin=<valid stream>, shell=False, universal_newlines=False) - training_pipeline - 1270
+2026-04-11 10:51:30,045 - DEBUG - Starting new HTTPS connection (1): config.mlflow-telemetry.io:443 - training_pipeline - 1049
+2026-04-11 10:51:30,593 - DEBUG - https://config.mlflow-telemetry.io:443 "GET /3.11.1.json HTTP/1.1" 200 308 - training_pipeline - 544
+2026-04-11 10:51:31,691 - DEBUG - Starting new HTTPS connection (1): api.mlflow-telemetry.io:443 - training_pipeline - 1049
+2026-04-11 10:51:32,885 - DEBUG - https://api.mlflow-telemetry.io:443 "POST /log HTTP/1.1" 200 30 - training_pipeline - 544
+2026-04-11 10:51:36,707 - INFO - mlflow tracking ended - training_pipeline - 136
+2026-04-11 10:51:36,707 - INFO - loading preprocessed pkl file - training_pipeline - 138
+2026-04-11 10:51:36,707 - INFO - Loading object data - training_pipeline - 177
+2026-04-11 10:51:36,709 - INFO - Loaded successfully object data to D:\PythonProject3\CyberSecurity\artifacts\04_11_2026_10_50_57\transformation_dir\preprocessing.pkl - training_pipeline - 184
+2026-04-11 10:51:36,709 - INFO - created model directory at D:\PythonProject3\CyberSecurity\artifacts\04_11_2026_10_50_57\model_training - training_pipeline - 144
+2026-04-11 10:51:36,710 - INFO - Saving object data - training_pipeline - 160
+2026-04-11 10:51:36,727 - INFO - Saved successfully object data to D:\PythonProject3\CyberSecurity\artifacts\04_11_2026_10_50_57\model_training\model.pkl - training_pipeline - 165
+2026-04-11 10:51:36,727 - INFO - Saving object data - training_pipeline - 160
+2026-04-11 10:51:36,745 - INFO - Saved successfully object data to final_model/model.pkl - training_pipeline - 165
+2026-04-11 10:51:36,750 - INFO - Model training initiated and artifact: ModelTrainingArtifact(trained_model_file_path='D:\\PythonProject3\\CyberSecurity\\artifacts\\04_11_2026_10_50_57\\model_training', train_metrics_artifact=ClassificationMetricsArtifact(f1_score=0.9905141748410047, recall_score=0.9930833243272452, precision_score=0.9879582840554779), test_metrics_artifact=ClassificationMetricsArtifact(f1_score=0.9863325740318907, recall_score=0.9901992812806273, precision_score=0.9824959481361426)) - training_pipeline - 80
