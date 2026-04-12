@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Predict Model</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: Poppins;
+    background: linear-gradient(135deg,#0f2027,#203a43);
+    color: white;
+}
+
+.container {
+    padding: 40px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px,1fr));
+    gap: 15px;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 8px;
+    border: none;
+}
+
+.card {
+    background: rgba(255,255,255,0.08);
+    padding: 15px;
+    border-radius: 10px;
+}
+
+button {
+    margin-top: 20px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background: #00c6ff;
+    color: white;
+    cursor: pointer;
+}
+
+/* RESULT */
+.result {
+    margin-top: 20px;
+    font-size: 22px;
+    color: #00ffcc;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<h2>🔍 Website Prediction Model</h2>
+
+<div class="grid">
+
+    <!-- ALL INPUT FEATURES -->
+
+    {% for field in [
+        'having_IP_Address','URL_Length','Shortining_Service','having_At_Symbol',
+        'double_slash_redirecting','Prefix_Suffix','having_Sub_Domain','SSLfinal_State',
+        'Domain_registeration_length','Favicon','port','HTTPS_token','Request_URL',
+        'URL_of_Anchor','Links_in_tags','SFH','Submitting_to_email','Abnormal_URL',
+        'Redirect','on_mouseover','RightClick','popUpWidnow','Iframe','age_of_domain',
+        'DNSRecord','web_traffic','Page_Rank','Google_Index','Links_pointing_to_page',
+        'Statistical_report'
+    ] %}
+
+    <div class="card">
+        <label>{{ field }}</label>
+        <input type="number" id="{{ field }}" placeholder="-1 or 1">
+    </div>
+
+    {% endfor %}
+
+</div>
+
+<button onclick="predict()">🚀 Submit Prediction</button>
+
+<div class="result" id="result"></div>
+
+</div>
+
+<script>
+function predict() {
+
+    let data = {};
+
+    {% for field in [
+        'having_IP_Address','URL_Length','Shortining_Service','having_At_Symbol',
+        'double_slash_redirecting','Prefix_Suffix','having_Sub_Domain','SSLfinal_State',
+        'Domain_registeration_length','Favicon','port','HTTPS_token','Request_URL',
+        'URL_of_Anchor','Links_in_tags','SFH','Submitting_to_email','Abnormal_URL',
+        'Redirect','on_mouseover','RightClick','popUpWidnow','Iframe','age_of_domain',
+        'DNSRecord','web_traffic','Page_Rank','Google_Index','Links_pointing_to_page',
+        'Statistical_report'
+    ] %}
+
+    data["{{ field }}"] = document.getElementById("{{ field }}").value;
+
+    {% endfor %}
+
+    fetch("/predict", {
+        method: "POST",
+        headers: {
+            "Content-Type": "application/json"
+        },
+        body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(res => {
+
+        if (res.status === "success") {
+            document.getElementById("result").innerHTML =
+                "🔮 Prediction: " + res.prediction;
+        } else {
+            document.getElementById("result").innerHTML =
+                "❌ Error: " + res.message;
+        }
+
+    });
+}
+</script>
+
+</body>
+</html>

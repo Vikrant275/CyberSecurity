@@ -1,11 +1,13 @@
 import os,sys,yaml
+from logging import exception
+
 import pandas as pd
 import numpy as np
 from scipy.stats import ks_2samp
 
 from framework.logger import logging
 from framework.exception import MyException
-import pickle
+import pickle,json
 
 
 def read_yaml(yaml_file_name: str) -> dict:
@@ -183,6 +185,32 @@ def load_object(file_path:str):
                 obj = pickle.load(f_obj)
         logging.info(f'Loaded successfully object data to {file_path}')
         return obj
+    except Exception as e:
+        logging.error(e)
+        raise MyException(e, sys)
+
+def save_json(file_path,obj):
+    try:
+        with open(file_path, 'w') as f:
+            json.dump(obj, f,indent=4)
+
+        logging.info(f'Saved successfully object data to {file_path}')
+
+    except Exception as e:
+        logging.error(e)
+        raise MyException(e, sys)
+
+def load_json(file_path:str):
+    try:
+        logging.info('Loading object data')
+        if not os.path.exists(file_path):
+            logging.error(f'File {file_path} does not exist')
+            raise FileNotFoundError(f'File {file_path} does not exist')
+        else:
+            with open(file_path, 'r') as f:
+                obj = json.load(f)
+            logging.info(f'Loaded successfully object data to {file_path}')
+            return obj
     except Exception as e:
         logging.error(e)
         raise MyException(e, sys)

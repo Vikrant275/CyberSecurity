@@ -1,0 +1,10 @@
+artifact_location: file:\D:\PythonProject3\CyberSecurity\mlruns/0/models/m-c9df4b4863b242dfafa5b37b09ac06a5/artifacts
+creation_timestamp: 1776003402137
+experiment_id: '0'
+last_updated_timestamp: 1776003405165
+model_id: m-c9df4b4863b242dfafa5b37b09ac06a5
+model_type: null
+name: model
+source_run_id: a80c7e38968346898ba73bbf862df37c
+status: 2
+status_message: null

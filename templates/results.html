@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Results</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: Poppins;
+    background: linear-gradient(135deg,#141e30,#243b55);
+    color: white;
+}
+
+.container { padding: 40px; }
+
+.card {
+    background: rgba(255,255,255,0.08);
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 15px;
+}
+
+.metric {
+    background: rgba(255,255,255,0.06);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.value {
+    color: #00ffcc;
+    font-size: 20px;
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h1>📊 Model Results</h1>
+
+    <div class="card">
+        <h3>🏆 Model Name</h3>
+        <p id="modelName"></p>
+    </div>
+
+    <div class="card">
+        <h3>📁 Model Path</h3>
+        <p id="modelPath"></p>
+    </div>
+
+    <div class="card">
+        <h3>🧠 Train Metrics</h3>
+        <div class="grid" id="train"></div>
+    </div>
+
+    <div class="card">
+        <h3>🧪 Test Metrics</h3>
+        <div class="grid" id="test"></div>
+    </div>
+
+</div>
+
+<script>
+const data = JSON.parse(localStorage.getItem("pipeline_result"));
+
+document.getElementById("modelName").innerText = data.model_name;
+document.getElementById("modelPath").innerText = data.trained_model_file_path;
+
+function render(id, metrics) {
+    const box = document.getElementById(id);
+
+    for (let k in metrics) {
+        box.innerHTML += `
+            <div class="metric">
+                <h4>${k}</h4>
+                <div class="value">${metrics[k]}</div>
+            </div>
+        `;
+    }
+}
+
+render("train", data.train_metrics_artifact);
+render("test", data.test_metrics_artifact);
+</script>
+
+</body>
+</html>

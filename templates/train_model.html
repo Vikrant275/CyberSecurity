@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Train Model</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* ---------------- BASE ---------------- */
+body {
+    margin: 0;
+    font-family: Poppins;
+    background: linear-gradient(135deg,#0f2027,#203a43);
+    color: white;
+}
+
+.container { padding: 40px; }
+
+.card {
+    background: rgba(255,255,255,0.08);
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+    gap: 15px;
+}
+
+/* ---------------- BUTTON ---------------- */
+button {
+    margin-top: 30px;
+    padding: 12px 25px;
+    border: none;
+    border-radius: 25px;
+    background: #00c6ff;
+    color: white;
+    cursor: pointer;
+}
+
+/* ---------------- OVERLAY ---------------- */
+.overlay {
+    position: fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;
+    background: rgba(0,0,0,0.85);
+    display:none;
+    justify-content:center;
+    align-items:center;
+    flex-direction:column;
+}
+
+/* ---------------- YOUR LOADER ---------------- */
+.loader {
+  width: 50px;
+  aspect-ratio: 1;
+  --_c: no-repeat radial-gradient(farthest-side,#25b09b 92%,#0000);
+  background:
+    var(--_c) top,
+    var(--_c) left,
+    var(--_c) right,
+    var(--_c) bottom;
+  background-size: 12px 12px;
+  animation: l7 1s infinite;
+  margin-bottom: 20px;
+}
+
+@keyframes l7 {
+  to { transform: rotate(.5turn); }
+}
+
+/* ---------------- PIPELINE BAR ---------------- */
+.pipeline-bar {
+    width: 320px;
+    height: 10px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 15px;
+}
+
+.pipeline-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg,#25b09b,#00ffcc);
+    transition: width 0.3s ease;
+}
+
+/* ---------------- TIMER ---------------- */
+.timer {
+    margin-top: 10px;
+    color: #00ffcc;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h2>🚀 Training Pipeline</h2>
+
+    <div class="grid">
+        {% for m in models %}
+        <div class="card">{{ m }}</div>
+        {% endfor %}
+    </div>
+
+    <button onclick="startPipeline()">Start Training</button>
+</div>
+
+<!-- LOADER OVERLAY -->
+<div class="overlay" id="overlay">
+
+    <div class="loader"></div>
+
+    <div class="pipeline-bar">
+        <div class="pipeline-fill" id="fill"></div>
+    </div>
+
+    <div class="timer" id="timer">Time: 0s</div>
+
+</div>
+
+<script>
+
+let timer;
+let sec = 0;
+let progress = 0;
+
+function startPipeline() {
+
+    const overlay = document.getElementById("overlay");
+    const timerText = document.getElementById("timer");
+    const fill = document.getElementById("fill");
+
+    overlay.style.display = "flex";
+
+    sec = 0;
+    progress = 0;
+    fill.style.width = "0%";
+
+    timer = setInterval(() => {
+
+        sec++;
+        timerText.innerText = "Time: " + sec + "s";
+
+        if (progress < 90) {
+            progress += Math.random() * 10;
+            fill.style.width = progress + "%";
+        }
+
+    }, 1000);
+
+    fetch("/start_pipeline", {
+        method: "POST"
+    })
+    .then(res => res.json())
+    .then(data => {
+
+        clearInterval(timer);
+
+        fill.style.width = "100%";
+
+        localStorage.setItem(
+            "pipeline_result",
+            JSON.stringify(data.result)
+        );
+
+        overlay.innerHTML = `
+            <div style="text-align:center;">
+                <div class="loader"></div>
+                <h2 style="color:#00ffcc;">✅ Training Completed</h2>
+                <p>Time: ${sec}s</p>
+                <p>Redirecting...</p>
+            </div>
+        `;
+
+        setTimeout(() => {
+            window.location.href = "/results";
+        }, 2000);
+
+    })
+    .catch(err => {
+
+        clearInterval(timer);
+
+        overlay.innerHTML = `
+            <div style="text-align:center;">
+                <h2 style="color:red;">❌ Error</h2>
+                <p>${err}</p>
+            </div>
+        `;
+    });
+}
+
+</script>
+
+</body>
+</html>

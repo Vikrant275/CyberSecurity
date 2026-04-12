@@ -62,3 +62,8 @@ MODEL_TRAINING_DIR_NAME :str = GetConfig(config_file='config_path.yaml', variabl
 MODEL_TRAINING_MODEL_NAME : str = GetConfig(config_file='config_file.yaml', variables='model_name').get()
 MODEL_TRAINED_EXPECTED_SCORE :float = 0.6
 MODEL_TRAINER_OVER_FITTING_UNDER_FITTING_THRESHOLD : float = 0.05
+
+'''
+prediction constants
+'''
+MODEL_INFORMATION:str = GetConfig(config_file='config_path.yaml', variables='model_information').get()

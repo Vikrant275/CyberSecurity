@@ -1,11 +1,12 @@
-import sys
+import sys,json,os
 
 from framework.logger import logging
 from framework.exception import MyException
 
 
-from networksecurity.entity.config_entity import DataIngestionConfig, DataValidationConfig,DataTransformationConfig,ModelTraningConfig
-from networksecurity.entity.config_entity import TrainingPipelineConfig
+from networksecurity.entity.config_entity import DataIngestionConfig, DataValidationConfig, DataTransformationConfig, \
+    ModelTraningConfig
+from networksecurity.entity.config_entity import TrainingPipelineConfig #TestingPipelineConfig
 
 from networksecurity.components.data_ingestion import DataIngestion
 from networksecurity.components.data_validation import DataValidation
@@ -15,12 +16,17 @@ from networksecurity.components.model_trainer import ModelTrainer
 from networksecurity.entity.artifact_entitiy import DataIngestionArtifact, DataValidationArtifact, DataTransformationArtifact, ModelTrainingArtifact,ClassificationMetricsArtifact
 
 import warnings
+
+from networksecurity.pipeline.batch_prediction import PredictionPipeline
+from networksecurity.utils.utils import save_json
+
 warnings.filterwarnings('ignore')
 
 
 class TrainingPipeline:
     def __init__(self):
         self.training_pipeline_config = TrainingPipelineConfig()
+        # self.test_pipeline_config = TestingPipelineConfig()
 
 
     def start_data_ingestion(self):
@@ -96,11 +102,24 @@ class TrainingPipeline:
             logging.info(f"training pipeline completed successfully")
             print(f"training pipeline completed successfully with model training artifact: {model_training_artifact}")
 
+            artifacts_dic = {
+                'model_name': model_training_artifact.model_name,
+                'trained_model_file_path': model_training_artifact.trained_model_file_path,
+                'train_metrics_artifact': model_training_artifact.train_metrics_artifact.__dict__,
+                'test_metrics_artifact': model_training_artifact.test_metrics_artifact.__dict__
+
+            }
+
+            model_info_file_path = os.path.join(self.training_pipeline_config.model_information,'model_info.json')
+            save_json(file_path=model_info_file_path,obj=artifacts_dic)
+
+            return artifacts_dic
+
         except Exception as e:
             logging.error(e)
             raise MyException(e,sys)
 
+if __name__ == '__main__':
+    pipeline = TrainingPipeline()
+    pipeline.start_pipeline()
 
-
-if __name__ == "__main__":
-    TrainingPipeline().start_pipeline()

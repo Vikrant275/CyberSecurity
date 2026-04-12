@@ -33,10 +33,14 @@ class ModelTrainer:
 
     def track_mlflow(self,model,train_classification,test_classification):
         with mlflow.start_run() as run:
+
             mlflow.sklearn.log_model(
                 sk_model=model,
-                name="my_model",
-                serialization_format="skops"
+                artifact_path="model",
+                skops_trusted_types=[
+                    "xgboost.core.Booster",
+                    "xgboost.sklearn.XGBClassifier"
+                ]
             )
 
             mlflow.log_param("train_f1_score",train_classification.f1_score)
@@ -55,11 +59,11 @@ class ModelTrainer:
         models = {
             'LogisticRegression':LogisticRegression(),
             'RandomForestClassifier':RandomForestClassifier(),
-            # 'GradientBoostingClassifier':GradientBoostingClassifier(),
-            # 'KNeighborsClassifier':KNeighborsClassifier(),
-            # 'DecisionTreeClassifier':DecisionTreeClassifier(),
-            # 'SVC':SVC(),
-            # 'XGBClassifier':XGBClassifier()
+            'GradientBoostingClassifier':GradientBoostingClassifier(),
+            'KNeighborsClassifier':KNeighborsClassifier(),
+            'DecisionTreeClassifier':DecisionTreeClassifier(),
+            'SVC':SVC(),
+            'XGBClassifier':XGBClassifier()
         }
 
         param_grids = {
@@ -117,6 +121,7 @@ class ModelTrainer:
         )
         logging.info(f"{best_entry} ------------")
         model = best_entry[1]['best_model']
+        model_name = best_entry[0]
         logging.info(f"model evaluation successfully")
         logging.info(f"best model: {model}  with best score: {best_entry[1]}")
 
@@ -149,7 +154,8 @@ class ModelTrainer:
         save_object(file_path='final_model/model.pkl',obj=model)
 
         model_train_artifact = ModelTrainingArtifact(
-            trained_model_file_path=self.model_trainer_config.model_training_dir,
+            model_name=model_name,
+            trained_model_file_path=model_path,
             train_metrics_artifact=classification_train_metric,
             test_metrics_artifact=classification_test_metric
 

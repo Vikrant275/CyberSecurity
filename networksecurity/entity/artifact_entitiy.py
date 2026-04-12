@@ -1,4 +1,5 @@
 from dataclasses import dataclass
+from typing import Any
 
 @dataclass
 class DataIngestionArtifact:
@@ -29,6 +30,7 @@ class ClassificationMetricsArtifact:
 
 @dataclass()
 class ModelTrainingArtifact:
+    model_name:str
     trained_model_file_path : str
     train_metrics_artifact : ClassificationMetricsArtifact
     test_metrics_artifact : ClassificationMetricsArtifact

@@ -1,0 +1,14 @@
+{
+    "model_name": "XGBClassifier",
+    "trained_model_file_path": "D:\\PythonProject3\\CyberSecurity\\artifacts\\04_12_2026_19_45_07\\model_training\\model.pkl",
+    "train_metrics_artifact": {
+        "f1_score": 0.9907237622694424,
+        "recall_score": 0.9935100054083288,
+        "precision_score": 0.9879531031515543
+    },
+    "test_metrics_artifact": {
+        "f1_score": 0.9863857374392221,
+        "recall_score": 0.9915281850765721,
+        "precision_score": 0.981296356014189
+    }
+}

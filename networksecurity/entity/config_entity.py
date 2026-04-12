@@ -13,9 +13,19 @@ class TrainingPipelineConfig:
             self.artifact_name = ARTIFACT_DIR
             self.artifact_dir = os.path.join(self.artifact_name,timestamp)
             self.timestamp : str= timestamp
+            self.model_information = MODEL_INFORMATION
         except Exception as e:
             logging.error(e)
             raise MyException(e,sys)
+
+# class TestingPipelineConfig:
+#     def __init__(self):
+#         try:
+#             self.model_information = MODEL_INFORMATION
+#         except Exception as e:
+#             logging.error(e)
+#             raise MyException(e,sys)
+
 
 class DataIngestionConfig:
     def __init__(self,training_pipeline_config):
